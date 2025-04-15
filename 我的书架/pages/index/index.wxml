@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<navigation-bar title="我的书架" back="{{false}}" color="black" background="#663366"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="loading_container" wx:if="{{isDownLoading}}">
+  <!-- 图书下载蒙层 -->
+    <text>下载中，请等待...</text>
+    <progress percent="{{percentNum}}" stroke-width="20" activeColor="#663366" backgroundColor="#FFFFFF" show-info="true" active="true" active-mode="forwards"> </progress>
+  </view>
+
+  <view class="book_container" wx:else="true">
+    <view class="box" wx:for="{{bookList}}" data-file="{{item.fileUrl}}" data-id="{{item.id}}" bind:tap="readBook">
+      <image src="{{item.poster}}" mode="widthFix"></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+
+
+</scroll-view>
